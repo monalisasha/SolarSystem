@@ -1,3 +1,8 @@
+/* Name: Monalisa Sha
+   ID : 300001469
+   Class : CSCI 272
+   Project Name: Solar System
+*/
 
 #include <string.h>
 
@@ -37,7 +42,6 @@ double angular=2*PI/50;
 
 
 /* GLUT callback Handlers */
-
 static void resize(int width, int height)
 {
      double Ratio;
@@ -55,7 +59,6 @@ static void resize(int width, int height)
 //For drawing the orbit for the solar system
 void orbit()
 {
-    //glColor3f(0.25,0.25,0.25);
     glColor3f(1.0, 1.0, 1.0);
     int i=0;
     for(i=0;i<8;i++){
@@ -90,11 +93,11 @@ static void display(void)
 	else
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);		//Toggle WIRE FRAME
 
-    // your code here
     glPushMatrix();
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_COLOR_MATERIAL);
 
+       //Created Sun
        glPushMatrix();
        glColor3f(1.0, 1.0 ,0.0);
        glMaterialfv(GL_FRONT_AND_BACK,GL_EMISSION,yellow);
@@ -102,16 +105,16 @@ static void display(void)
        glMaterialfv(GL_FRONT_AND_BACK,GL_EMISSION,light_ambient);
        glPopMatrix();
 
+         //Code to make earth and making it rotate around sun
          glRotatef(angleEarth,0.0,1.0,-0.5);
          glPushMatrix();
              glTranslatef(2.5,0.0,0.0);
              glColor3f(0.0,0.1,0.7);
              glScalef(0.5,0.5,0.5);
              glutSolidSphere(1,50,50);
-                //Moon made
+                //inside earth making Moon to rotate around sun
                 glPushMatrix();
                  glRotatef(angleMoon,0.0,1.0,-0.2);
-                 //glRotatef(angleMoon,0.0,1,0.0);
                  glTranslatef(1.0,0.2,1.2);
                  glColor3f(1.0,1.0,1.0);
                  glScalef(0.3,0.3,0.3);
@@ -119,7 +122,7 @@ static void display(void)
                glPopMatrix();//moon made
        glPopMatrix();//earth made
 
-       //For Jupiter
+       //For Jupiter (another planet)
        glPushMatrix();
          glRotatef(angleJupiter,0.0,1.0,-0.5);
          glTranslatef(-4.5,0.0,0.0);
@@ -129,7 +132,7 @@ static void display(void)
        glPopMatrix();//jupiter made
 
 
-       //For drawing the galaxy white circle
+       //For drawing the galaxy astroid circle
         glPushMatrix();
              glColor3f(3.30,3.30,3.30);
              glRotatef(63,1.0,0.0,0.0);
@@ -149,7 +152,7 @@ static void display(void)
             glEnd();
             glPopMatrix();
              }
-           glPopMatrix();//sun made
+           glPopMatrix();
 
     glPopMatrix();
     glutSwapBuffers();
@@ -166,6 +169,7 @@ static void key(unsigned char key, int x, int y)
     }
 }
 
+//Setting sun, moon , earth and jupiter angle
 static void idle(void)
 {
 
@@ -187,6 +191,11 @@ static void idle(void)
 
     glutPostRedisplay();
 }
+
+/*imulation starts once pressing UP_key here.
+initially start_flag was false and making it true and calling idle function
+
+*/
 
 void Specialkeys(int key, int x, int y)
 {
@@ -233,7 +242,8 @@ static void init(void)
 }
 
 
-/* Program entry point */
+/* Program entry point
+Calling all functions here */
 
 int main(int argc, char *argv[])
 {

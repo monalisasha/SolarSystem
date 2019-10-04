@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1570140315 source:/Users/monalisa/Desktop/Courses/CSCI272/Projects/Project2/main.cpp
+	<string.h>
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<iostream>
+	<math.h>
+
+1215483208 /Users/monalisa/Desktop/Courses/CSCI272/Projects/Project2/SOIL.h
+
